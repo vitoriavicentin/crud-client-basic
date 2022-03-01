@@ -1,0 +1,88 @@
+text {
+  font-family: sans-serif;
+  color: #fff;
+}
+
+body {
+  overflow: scroll;
+  overflow-x: hidden;
+  font-family: sans-serif;
+  /* Colors generated on: https://colorhunt.co/palette/179481 */
+  background: linear-gradient(45deg, #ff9801, #fb6704, #fab651, #b96731);
+  animation: colors 15s ease infinite;
+}
+
+.center {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#root,
+.App {
+  font-family: sans-serif;
+  min-height: 100vh;
+  min-width: 100%;
+  display: flex;
+  position: relative;
+}
+
+.sidebar-btn-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-btn {
+  padding: 1px 15px;
+  border-radius: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #adadad;
+  text-decoration: none;
+  margin: 0 auto;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.sidebar-btn span {
+  font-size: 13px;
+}
+
+@keyframes colors {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (max-width: 600px) {
+  .text {
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+  }
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.c-table {
+  max-width: 100%;
+  overflow-x: auto;
+}

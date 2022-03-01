@@ -1,0 +1,65 @@
+#formUser {
+  justify-content: center;
+  background-color: rgba(236, 227, 227, 0.89);
+  border-radius: 3px;
+  padding: 70px 100px;
+  align-items: center;
+  justify-content: center;
+}
+
+#divUser {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+#divUser #labelUser {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+  transition: all 0.5s ease-in-out;
+}
+
+#divUser #inputUser {
+  border: 0;
+  border-bottom: 1px solid #555;
+  background: transparent;
+  width: 100%;
+  padding: 8px 0 5px 0;
+  font-size: 16px;
+  color: rgb(12, 12, 12);
+}
+
+#divUser #inputUser:focus {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #e74c3c;
+}
+
+#validationUser {
+  color: #fff;
+  background-color: #e74c3c;
+  outline: none;
+  border: 0;
+  color: #fff;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  margin-top: 50px;
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+  transition-duration: 0.4s;
+}
+
+#validationUser:hover {
+  background-color: #fd0707;
+  /* Green */
+  color: white;
+}
+
+#divUser #inputUser:focus ~ label,
+#divUser #inputUser:valid ~ label {
+  top: -12px;
+  font-size: 12px;
+}
