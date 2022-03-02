@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import InputMask from "react-input-mask";
 import Swal from "sweetalert2";
 import "./FormInsert.css";
+import { BsTelephonePlus } from "react-icons/bs";
+import { RiMailAddFill } from "react-icons/ri";
+import { TablePhones } from "../TablePhones/TablePhones";
+import { TableMail } from "../TableMail/TableMail";
 
 const initialState = {
   name: "",
@@ -19,6 +23,8 @@ const initialState = {
 
 export const FormInsert = () => {
   const [state, setState] = useState(initialState);
+  const [optionalPhone, setOptionalPhone] = useState(false);
+  const [optionalMail, setOptionalMail] = useState(false);
 
   const {
     name,
@@ -34,14 +40,14 @@ export const FormInsert = () => {
     mail,
   } = state;
 
-  const getLocalStroge = () =>
+  const getLocalStorage = () =>
     JSON.parse(localStorage.getItem("db_client")) ?? [];
 
   const setLocalStorage = (db_client) =>
     localStorage.setItem("db_client", JSON.stringify(db_client));
 
   const AddStorage = () => {
-    const db_client = getLocalStroge();
+    const db_client = getLocalStorage();
     db_client.push(state);
     setLocalStorage(db_client);
     Alert();
@@ -200,7 +206,7 @@ export const FormInsert = () => {
       </div>
       <div className="row">
         <label htmlFor="inputTel" className="col-sm-2 col-form-label">
-          Telefone
+          Telefone:
         </label>
         <div className="col">
           <InputMask
@@ -213,8 +219,10 @@ export const FormInsert = () => {
             onChange={(e) => setState({ ...state, phone: e.target.value })}
           />
         </div>
+      </div>
+      <div className="row">
         <label className="col-sm-2 col-form-label" htmlFor="selectTel">
-          Tipo:
+          Tipo de Telefone:
         </label>
         <div className="col">
           <select
@@ -230,10 +238,23 @@ export const FormInsert = () => {
             <option value="Celular">Celular</option>
           </select>
         </div>
+        <div className="col">
+          <button
+            className="btn btn-success"
+            onClick={() =>
+              optionalPhone ? setOptionalPhone(false) : setOptionalPhone(true)
+            }
+          >
+            <BsTelephonePlus />
+          </button>
+        </div>
+      </div>
+      <div className="row">
+        {optionalPhone && <TablePhones cpf={state.cpf} />}
       </div>
       <div className="row">
         <label htmlFor="inputName" className="col-sm-2 col-form-label">
-          Email
+          Email Principal:
         </label>
         <div className="col">
           <InputMask
@@ -246,6 +267,19 @@ export const FormInsert = () => {
             value={mail}
             onChange={(e) => setState({ ...state, mail: e.target.value })}
           />
+        </div>
+        <div className="col">
+          <button
+            className="btn btn-success"
+            onClick={() =>
+              optionalMail ? setOptionalMail(false) : setOptionalMail(true)
+            }
+          >
+            <RiMailAddFill />
+          </button>
+        </div>
+        <div className="row">
+          {optionalMail && <TableMail cpf={state.cpf} />}
         </div>
         <div className="center">
           <input type="submit" className="btn btn-success" value="Inserir" />

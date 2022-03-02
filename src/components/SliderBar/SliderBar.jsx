@@ -11,7 +11,7 @@ import { FaSistrix, FaGithub, FaUserPlus, FaBars } from "react-icons/fa";
 import "react-pro-sidebar/dist/css/styles.css";
 import { Link } from "react-router-dom";
 
-const SlideBar = () => {
+const SliderBar = () => {
   const [collapsed, setCollapsed] = useState(false);
 
   const handleCollapsedChange = (checked) => {
@@ -21,6 +21,10 @@ const SlideBar = () => {
       setCollapsed(checked);
     }
   };
+
+  const readUser = () => JSON.parse(localStorage.getItem("db_user")) ?? [];
+
+  const db = readUser();
 
   const headerStyle = {
     padding: "24px",
@@ -40,11 +44,13 @@ const SlideBar = () => {
         </SidebarHeader>
         <SidebarContent>
           <Menu iconShape="circle">
-            <MenuItem icon={<FaUserPlus />}>
-              Cadastrar Cliente <Link to="/Form" />
-            </MenuItem>
+            {db.user === "admin" && (
+              <MenuItem icon={<FaUserPlus />}>
+                Cadastrar Cliente <Link to="/Form" />
+              </MenuItem>
+            )}
             <MenuItem icon={<FaSistrix />}>
-              Consultar Cliente <Link to="/Table" />
+              Consultar Cliente <Link to="/Consult" />
             </MenuItem>
           </Menu>
         </SidebarContent>
@@ -66,4 +72,4 @@ const SlideBar = () => {
   );
 };
 
-export default SlideBar;
+export default SliderBar;

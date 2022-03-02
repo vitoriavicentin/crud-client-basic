@@ -16,7 +16,7 @@ const initialState = {
   mail: "",
 };
 
-export const FormUpdate = ({ ...newData }, { ...indexCli }) => {
+export const FormUpdate = ({ ...newData }) => {
   const [state, setState] = useState(initialState);
 
   const newdataClient = newData.newData;
@@ -25,7 +25,7 @@ export const FormUpdate = ({ ...newData }, { ...indexCli }) => {
 
   const readClient = () => JSON.parse(localStorage.getItem("db_client")) ?? [];
 
-  const getLocalStroge = () =>
+  const getLocalStorage = () =>
     JSON.parse(localStorage.getItem("db_client")) ?? [];
 
   const setLocalStorage = (db_client) =>
@@ -36,7 +36,7 @@ export const FormUpdate = ({ ...newData }, { ...indexCli }) => {
     dbClient.splice(index, 1);
     localStorage.removeItem(index);
     setLocalStorage(dbClient);
-    const db_client = getLocalStroge();
+    const db_client = getLocalStorage();
     db_client.push(state);
     setLocalStorage(db_client);
     Alert();

@@ -12,12 +12,8 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />}></Route>
-          <Route index path="/Form" element={<Form />}>
-            {" "}
-          </Route>
-          <Route index path="/Table" element={<Consult />}>
-            {" "}
-          </Route>
+          <Route index path="/Form" element={<Form />}></Route>
+          <Route index path="/Consult" element={<Consult />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

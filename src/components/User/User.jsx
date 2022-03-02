@@ -12,15 +12,29 @@ export const User = () => {
 
   const { user, password } = state;
 
+  const setLocalStorage = (db_user) =>
+    localStorage.setItem("db_user", JSON.stringify(db_user));
+
+  const addUser = () => {
+    setLocalStorage(state);
+  };
+
   const checkLogin = (state) => {
-    if (user === "admin" && password === "123456") {
+    if (
+      (user === "admin" && password === "123456") ||
+      (user === "comum" && password === "123456")
+    ) {
       Swal.fire({
         icon: "success",
         title: "Sucesso!",
         title: "Usuario autenticado com sucesso",
       });
-
-      window.location.href = "/Form";
+      addUser(state);
+      if (user === "admin") {
+        window.location.href = "/Form";
+      } else {
+        window.location.href = "/Consult";
+      }
     } else {
       Swal.fire({
         icon: "error",
