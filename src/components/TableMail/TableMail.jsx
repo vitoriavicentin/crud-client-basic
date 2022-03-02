@@ -59,7 +59,7 @@ export const TableMail = ({ ...cpf }) => {
   };
 
   const clearState = () => {
-    setState({ state: "" });
+    setState(initialState);
   };
 
   return (

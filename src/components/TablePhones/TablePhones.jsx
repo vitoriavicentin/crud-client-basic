@@ -60,7 +60,7 @@ export const TablePhones = ({ ...cpf }) => {
   };
 
   const clearState = () => {
-    setState({ state: "" });
+    setState(initialState);
   };
 
   return (
