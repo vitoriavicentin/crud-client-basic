@@ -5,7 +5,6 @@ Project developed in ReactJS, using Bootstrap,CSS,HTML and API REST with viacep.
 Installation Commands:
 
 ```python
-If your use Npm:
 npm install
 ```
 
