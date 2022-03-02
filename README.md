@@ -24,6 +24,5 @@ npm run build
 
 ````
 After build done, execute this:
-```python
 npm start
 ````
