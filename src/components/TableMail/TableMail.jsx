@@ -21,7 +21,11 @@ export const TableMail = ({ ...cpf }) => {
 
   const saveState = () => {
     state.mailCpf = cpfMail;
-    insertMail();
+    if (!state.mailCpf.cpf) {
+      Alert("cpf_null");
+    } else {
+      insertMail();
+    }
   };
 
   const insertMail = () => {
@@ -48,10 +52,17 @@ export const TableMail = ({ ...cpf }) => {
         title: "E-mail inserido com sucesso!",
         timer: 1500,
       });
-    } else {
+    } else if (action === "delete") {
       Swal.fire({
         icon: "success",
         title: "E-mail deletado!",
+        timer: 1500,
+      });
+    } else if (action === "cpf_null") {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        title: "Insira o CPF para adicionar e-mail opcional!",
         timer: 1500,
       });
     }
@@ -59,7 +70,7 @@ export const TableMail = ({ ...cpf }) => {
   };
 
   const clearState = () => {
-    setState(initialState);
+    setState({ mail: "" });
   };
 
   return (
@@ -79,6 +90,7 @@ export const TableMail = ({ ...cpf }) => {
                   id="inputTel"
                   className="form-control"
                   type="email"
+                  autoComplete="true"
                   value={mail}
                   onChange={(e) => setState({ ...state, mail: e.target.value })}
                 />

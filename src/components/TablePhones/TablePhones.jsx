@@ -22,7 +22,11 @@ export const TablePhones = ({ ...cpf }) => {
 
   const saveState = () => {
     state.phoneCpf = cpfPhone;
-    insertPhone();
+    if (!state.phoneCpf.cpf) {
+      Alert("cpf_null");
+    } else {
+      insertPhone();
+    }
   };
 
   const insertPhone = () => {
@@ -49,10 +53,17 @@ export const TablePhones = ({ ...cpf }) => {
         title: "Telefone inserido com sucesso!",
         timer: 1500,
       });
-    } else {
+    } else if (action === "delete") {
       Swal.fire({
         icon: "success",
         title: "Telefone deletado!",
+        timer: 1500,
+      });
+    } else if (action === "cpf_null") {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        title: "Insira o CPF para adicionar telefone opcional!",
         timer: 1500,
       });
     }
@@ -60,7 +71,7 @@ export const TablePhones = ({ ...cpf }) => {
   };
 
   const clearState = () => {
-    setState(initialState);
+    setState({ phone: "", phone_type: "" });
   };
 
   return (
